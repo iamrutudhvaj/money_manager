@@ -1,23 +1,30 @@
-import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:money_manager/src/features/add_transaction/add_transaction_screen.dart';
+import 'package:money_manager/src/features/home/home_screen.dart';
 import 'package:money_manager/src/features/splash/splash_screen.dart';
 
-import '../features/home/home_screen.dart';
-import 'export_router.dart';
+enum AppRoute {
+  splash('/splash'),
+  home('/home'),
+  transaction('/transaction');
 
-abstract class AppRouter {
-  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
-    String routeName = settings.name!;
-    switch (routeName) {
-      case AppRoutes.splashRoute:
-        return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
-        );
-      case AppRoutes.homeRoute:
-        return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        );
-      default:
-        return null;
-    }
-  }
+  final String path;
+  const AppRoute(this.path);
+}
+
+abstract class AppRoutePages {
+  static List<GetPage> pages = [
+    GetPage(
+      name: AppRoute.splash.path,
+      page: () => const SplashScreen(),
+    ),
+    GetPage(
+      name: AppRoute.home.path,
+      page: () => const HomeScreen(),
+    ),
+    GetPage(
+      name: AppRoute.transaction.path,
+      page: () => const AppTransactionScreen(),
+    ),
+  ];
 }
