@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:money_manager/src/constant/app_color.dart';
 import 'package:money_manager/src/utils/app_input_border.dart';
 import 'package:money_manager/src/utils/app_text_style.dart';
-import 'package:money_manager/src/utils/transaction_type.dart';
-import 'package:money_manager/src/utils/size_extension.dart';
 import 'package:money_manager/src/utils/app_typedef.dart';
+import 'package:money_manager/src/utils/size_extension.dart';
+import 'package:money_manager/src/utils/transaction_type.dart';
 
 class SaveTransactionWidget extends StatelessWidget {
   const SaveTransactionWidget({
@@ -44,14 +44,14 @@ class SaveTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Date',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -77,14 +77,14 @@ class SaveTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Amount',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -108,14 +108,14 @@ class SaveTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Category',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -141,14 +141,14 @@ class SaveTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Account',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -174,14 +174,14 @@ class SaveTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Note',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -246,14 +246,14 @@ class SaveTransferTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Date',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -279,14 +279,14 @@ class SaveTransferTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Amount',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -310,14 +310,14 @@ class SaveTransferTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'From',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -343,14 +343,14 @@ class SaveTransferTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'To',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(
@@ -376,14 +376,14 @@ class SaveTransferTransactionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Text(
                       'Note',
                       style: AppTextStyle.style400,
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 7,
                     child: Padding(
                       padding: EdgeInsets.only(left: 5.w),
                       child: TextFormField(

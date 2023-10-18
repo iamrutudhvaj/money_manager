@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:money_manager/src/constant/app_color.dart';
 import 'package:money_manager/src/router/app_router.dart';
+import 'package:money_manager/src/store/category_store.dart';
 import 'package:money_manager/src/utils/app_input_border.dart';
 import 'package:money_manager/src/utils/date_formate.dart';
 import 'package:money_manager/src/utils/size_extension.dart';
@@ -19,6 +20,8 @@ class AppTransactionScreen extends StatefulWidget {
 }
 
 class _AppTransactionScreenState extends State<AppTransactionScreen> {
+  CategoryStore categoryStore = CategoryStore();
+
   TransactionType type = TransactionType.expense;
   final TextEditingController dateController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
@@ -64,20 +67,7 @@ class _AppTransactionScreenState extends State<AppTransactionScreen> {
   }
 
   void onCategoryClick() {
-    List<String> category = [
-      'Food',
-      'Social Life',
-      'Pets',
-      'Transport',
-      'Culture',
-      'Household',
-      'Apparel',
-      'Beauty',
-      'Health',
-      'Education',
-      'Gift',
-      'Other',
-    ];
+    List<dynamic> category = categoryStore.getCategory(type.name);
 
     showModalBottomSheet(
       context: context,
@@ -99,6 +89,13 @@ class _AppTransactionScreenState extends State<AppTransactionScreen> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Get.toNamed(AppRoute.category.path, arguments: type);
+                    },
+                    icon: const Icon(Icons.edit),
                   ),
                   IconButton(
                     onPressed: () {
@@ -136,7 +133,79 @@ class _AppTransactionScreenState extends State<AppTransactionScreen> {
                         style: const TextStyle(
                           color: AppColor.white,
                           fontSize: 16,
-                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void onAccountClick() {
+    List<dynamic> category = ['Cash', 'Account'];
+
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => Container(
+        decoration:
+            const BoxDecoration(color: AppColor.scaffoldBackgroundColor),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(left: 15),
+              decoration: const BoxDecoration(color: AppColor.white30),
+              child: Row(
+                children: [
+                  const Expanded(
+                    child: Text(
+                      'Accounts',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.clear),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
+                itemCount: category.length,
+                physics: const BouncingScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 2.5,
+                ),
+                itemBuilder: (context, index) => Material(
+                  color: AppColor.transparent,
+                  child: InkWell(
+                    highlightColor: AppColor.transparent,
+                    splashColor: type.color.withOpacity(0.1),
+                    onTap: () {
+                      accountController.text = category[index];
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColor.white30, width: 0.1),
+                      ),
+                      child: Text(
+                        category[index],
+                        style: const TextStyle(
+                          color: AppColor.white,
+                          fontSize: 16,
                         ),
                       ),
                     ),
@@ -176,6 +245,7 @@ class _AppTransactionScreenState extends State<AppTransactionScreen> {
                       borderRadius: BorderRadius.circular(5),
                       onTap: () {
                         setState(() {
+                          categoryController.text = '';
                           type = transactionType;
                         });
                       },
@@ -222,7 +292,7 @@ class _AppTransactionScreenState extends State<AppTransactionScreen> {
                 noteController: noteController,
                 onDateClick: onDateClick,
                 onCategoryClick: onCategoryClick,
-                onAccountClick: () {},
+                onAccountClick: onAccountClick,
               ),
             ] else ...[
               SaveTransferTransactionWidget(
